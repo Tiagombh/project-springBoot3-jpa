@@ -1,6 +1,5 @@
 package com.projectApril.project.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.projectApril.project.entities.User;
 import com.projectApril.project.repositories.UserRepository;
-
-import jakarta.persistence.Id;
 @Service
 public class UserService {
 	@Autowired
