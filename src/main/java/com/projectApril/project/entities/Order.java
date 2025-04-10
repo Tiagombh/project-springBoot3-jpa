@@ -30,8 +30,8 @@ public class Order implements Serializable {
 	private Long id;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd 'T' HH:mm:ss'Z' ", timezone = "GMT")
 	private Instant moment;
-
 	private Integer orderStatus;
+
 	@ManyToOne
 	@JoinColumn(name = "Client_id")
 	private User client;
@@ -41,6 +41,14 @@ public class Order implements Serializable {
 
 	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
 	private Payment payment;
+
+	public Double getTotal() {
+		double sum = 0;
+		for (OrderItem x : items) {
+			sum += x.getSubtotal();
+		}
+		return sum;
+	}
 
 	public Order() {
 		super();
